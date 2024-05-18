@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>map</title>
+		<link rel="stylesheet" href="./css/background.css">
+		<script src="./js/echarts.js"></script>
+		<script src="./js/china.js"></script>
+
+	</head>
+	<body>
+		<div style="position: fixed;z-index: 999;">家乡(文字未想好版)</div>
+		<div id="mainmap" style="width:85vw;height:85vw;position: fixed;margin-top: -15dvw;margin-left: 5dvw;z-index: 999;opacity:0.85;"></div>
+		<script>
+			var mymap=echarts.init(document.getElementById('mainmap'));
+			var option={
+				
+				geo:{
+					map:'china',
+					id:"china",
+					label:{
+						show:false,
+					},
+					lineStyle:{
+						show:false,
+					},
+					
+					itemStyle:{
+						
+						borderWidth:2,
+						zlevel:-1,
+						shadowBlur:5,
+						backdropBlur: 5,
+						shadowColor:'#00000090',
+						shadowOffsetY:1,
+						
+					},
+					emphasis:{
+						label:{
+							show:false,
+						},
+						lineStyle:{
+							show:false,
+						},
+						itemStyle:{
+						areaColor:'#00000000',
+						borderWidth:2,
+						zlevel:-1,
+						shadowBlur:5,
+						backdropBlur: 5,
+						shadowColor:'#00000090',
+						shadowOffsetY:1,
+						
+					},
+					}
+				},
+				series:[{
+					type:'map',
+					map:'china',
+					
+					label: { // 文字
+					     show: false,
+						 fontSize: 1,
+					 },
+					 itemStyle: { // 地图样式
+					     areaColor: '#ffffff',  //区域颜色
+					     borderColor: '#55557f',  //边框颜色
+					     borderWidth: 0.5,
+						 
+					 },
+					 
+					 emphasis: { // 鼠标移入时显示的默认样式
+					     itemStyle: {
+					         areaColor: '#c0c0c0',
+					         borderColor: '#404a59',
+					         borderWidth: 1,
+					     },
+					     label: { // 文字
+					         show: true,
+					         color: '#262626',
+					         fontSize: 6,
+					         fontWeight: 600,
+					     },
+					 },
+					data:[
+						{
+							name:'重庆',
+							itemStyle:{
+								areaColor:'#c88563',
+							},
+							emphasis:{
+								itemStyle:{
+									areaColor:'#ff5500',
+									shadowColor:'#9c0b0b',
+									borderColor:'#ffe0ca',
+									borderWidth: 1,
+									shadowBlur: 1,
+									shadowOffsetX:1,
+									shadowOffsetY:1
+								},
+								label:{
+									show:true,
+									color:"#aa0000",
+									fontSize:8,
+									fontWeight:600,
+								},
+							},
+						},
+						{
+							name:'江苏',
+							itemStyle:{
+							areaColor:'#85c8c8',
+							},
+							
+							emphasis:{
+								itemStyle:{
+								areaColor:'#aaffff',
+								shadowColor:'#72acd3',
+								borderColor:'#ebffff',
+								shadowBlur: 1,
+								shadowOffsetX:1,
+								shadowOffsetY:1
+								},
+								label:{
+									show:true,
+									fontSize:8,
+									fontWeight:600,
+								},
+							}
+						},
+						{
+							name:'浙江',
+							itemStyle:{
+							areaColor:'#87c863',
+							},
+							emphasis:{
+								itemStyle:{
+								areaColor:'#aaff7f',
+								shadowColor:'#00aa7f',
+								borderColor:'#ddffce',
+								borderWidth: 1,
+								shadowBlur: 1,
+								shadowOffsetX:1,
+								shadowOffsetY:1
+								},
+								label:{
+									show:true,
+									fontSize:8,
+									fontWeight:600,
+								},
+							}
+						},
+						{
+							name:'安徽',
+							itemStyle:{
+								areaColor:'#c885c8',
+							},
+							emphasis:{
+								itemStyle:{
+								areaColor:'#ffaaff',
+								shadowColor:'#df6898',
+								borderColor:'#ffdeed',
+								borderWidth: 1,
+								shadowBlur: 1,
+								shadowOffsetX:1,
+								shadowOffsetY:1
+								},
+								label:{
+									show:true,
+									fontSize:8,
+									fontWeight:600,
+								},
+							},
+						},
+						{
+							name:'新疆',
+							itemStyle:{
+								areaColor:'#c8c863',
+							},
+							emphasis:{
+								itemStyle:{
+								areaColor:'#ffff7f',
+								shadowColor:'#df9500',
+								borderColor:'#fffce6',
+								borderWidth: 1,
+								shadowBlur: 1,
+								shadowOffsetX:1,
+								shadowOffsetY:1
+								},
+								label:{
+									show:true,
+									fontSize:8,
+									fontWeight:600,
+								},
+							},
+						},
+					]
+				},
+				{
+					type:'lines',
+					zlevel:1,
+					effect:{
+						show:true,
+						period:4,
+						trailLength:0.1,
+						symbol:'arrow',
+						symbolSize:3,
+						color: '#00ffff',
+						
+					},
+					lineStyle:{
+						show:true,
+						width:0.8,
+						opacity:0.5,
+						curveness:-0.2,
+						color:'#0055ff',
+						type:'dashed',
+					},
+					data:[{
+						fromName:'上海',
+						toName:'新疆',
+						coords:[
+							[121.472644,31.231706],
+							[85.617733,40.792818]
+						]
+					},
+					{
+						fromName:'上海',
+						toName:'重庆',
+						coords:[
+							[121.472644,31.231706],
+							[107.304962,29.533155],
+						]
+					},
+					{
+						fromName:'上海',
+						toName:'浙江',
+						coords:[
+							[121.472644,31.231706],
+							[120.153576,29.287459],
+						]
+					},
+					{
+						fromName:'上海',
+						toName:'江苏',
+						coords:[
+							[121.472644,31.231706],
+							[119.767413,33.041544],
+						]
+					},
+					{
+						fromName:'上海',
+						toName:'安徽',
+						coords:[
+							[121.472644,31.231706],
+							[117.283042,31.26119],
+						]
+					},
+					]
+				},
+
+				
+				]}
+			
+			mymap.on('click',function(option){/*你们各自链接后面要改一下*/
+				if(option.data.name=='重庆'){
+					location.href="http://www.baidu.com";
+				}
+				else if(option.data.name=='浙江'){
+					location.href="../拿来交的/这是本体.html";
+				}
+				else if(option.data.name=='江苏'){
+					location.href="https://s.ecust.edu.cn";
+				}
+				else if(option.data.name=='安徽'){
+					location.href="https://kimi.moonshot.cn";
+				}
+				else if(option.data.name=='新疆'){
+					location.href="https://github.com";
+				}
+			})
+			mymap.setOption(option);
+		</script>
+		<div class="container" >
+			<div>
+				<img src="./img/img-1.jpg" alt="" id="img-0" class="active" style="z-index: 80;" >
+				<img src="./img/img-2.jpg" alt="" id="img-1" >
+				<img src="./img/img-3.jpg" alt="" id="img-2" >
+				<img src="./img/img-4.jpg" alt="" id="img-3" >
+				<img src="./img/img-5.jpg" alt="" id="img-4" >
+			</div>
+		</div>
+		<script src="./js/background.js"></script>
+	</body>
+	
+</html>
