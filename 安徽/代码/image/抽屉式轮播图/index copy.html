@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>山羊の前端小窝</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url(./img/bg.jpg);
+      background-size: cover;
+    }
+
+    #main {
+      
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #click-section {
+      width: 35%;
+      height: 100%;
+      padding: 20px 0;
+      position: relative;
+    }
+
+    #drawerboxes {
+      margin-left: 10%;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    #drawerboxes::before {
+      content: "";
+      width: 8px;
+      height: 94%;
+      position: absolute;
+      left: -10px;
+      top: 3%;
+      z-index: 120;
+    }
+
+    .drawerbox {
+      height: calc(100% / 5.5);
+      width: 70%;
+      position: relative;
+      z-index: 100;
+      transform: translateX(-70%);
+      transition: transform .5s ease-in-out;
+    }
+
+    .drawerbox.active {
+      transform: translateX(0);
+    }
+
+    .drawer-btn {
+      width: 100%;
+      height: 100%;
+      font: 800 30px '';
+      background-color: rgb(175, 190, 255);
+      border: none;
+      transition: background-color .5s ease-in-out;
+      color: #ffffff00;
+    }
+
+    .drawer-btn.active {
+      background-image: url(./img/bg.jpg);
+      background-size: cover;
+      color: rgb(70, 100, 180);
+    }
+
+    .drawer-btn:hover {
+      cursor: pointer;
+    }
+
+    .drawer-head {
+      position: absolute;
+      color: rgb(255, 255, 255);
+      font-size: 200px;
+      font-weight: 700;
+      right: -38px;
+      top: calc(50% - 135px);
+      text-shadow: 2px -1px 8px rgba(250, 80, 193, 0.323);
+    }
+
+    #slide-section {
+      position: relative;
+      height: 100%;
+      width: 65%;
+      display: flex;
+      justify-content: center;
+      padding: 0 40px;
+      background: linear-gradient(to right bottom,
+          rgba(255, 255, 255, .6),
+          rgba(255, 255, 255, .3),
+          rgba(255, 255, 255, .2));
+      backdrop-filter: blur(11px);
+    }
+
+    #slide-bar {
+      position: absolute;
+      top: 10%;
+      left: 40px;
+      height: 80%;
+      width: 1px;
+      background-color: rgb(223, 223, 223);
+    }
+
+    #bar {
+      position: absolute;
+      height: calc(100% / 4);
+      width: 5px;
+      top: 0;
+      left: -1.2px;
+      background-color: rgb(175, 190, 255);
+      transition: transform .5s ease-in-out;
+    }
+
+    #card-section {
+      height: 100%;
+      width: 80%;
+      overflow: hidden;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      padding: 10% 0;
+      color: white;
+      font-size: 30px;
+      transition: transform .5s ease-in-out;
+    }
+
+    .card-small-title {
+      font-size: 30px;
+      font-weight: 600;
+      padding-bottom: min(5%, 10px);
+      color: rgb(70, 100, 180);
+    }
+
+    .card-title {
+      font-size: 80px;
+      font-weight: 700;
+      padding-bottom: min(20%, 40px);
+      color: rgb(70, 100, 180);
+    }
+
+    .card-content {
+      font-size: 24px;
+      font-weight: 400;
+      color: rgb(94, 123, 255);
+      margin-bottom: 60px;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="click-section">
+      <div id="drawerboxes">
+        <div class="drawerbox active">
+          <button class="drawer-btn active" onclick="slideTo(1)">The Wind Rises<span
+              class="drawer-head">1</span></button>
+        </div>
+        <div class="drawerbox">
+          <button class="drawer-btn" onclick="slideTo(2)">Children of the Wind<span
+              class="drawer-head">2</span></button>
+        </div>
+        <div class="drawerbox">
+          <button class="drawer-btn" onclick="slideTo(3)">Title Here<span class="drawer-head">3</span></button>
+        </div>
+        <div class="drawerbox">
+          <button class="drawer-btn" onclick="slideTo(4)">Title Here<span class="drawer-head">4</span></button>
+        </div>
+      </div>
+    </div>
+    <div id="slide-section">
+      <div id="slide-bar">
+        <div id="bar"></div>
+      </div>
+      <div id="card-section">
+        <div id="card1" class="card">
+          <div class="card-small-title">Miyazaki Hayao</div>
+          <div class="card-title">The Wind Rises</div>
+          <div class="card-content">Quote: "Even in the dark night, the stars will not
+            disappear." Reflection: In the journey of life, we may encounter storms
+            and difficulties, but as long as we have faith and hope in our hearts,
+            we can find light even in the darkness.</div>
+          <div class="card-img">
+            <img src="./img/17.gif" alt="">
+          </div>
+        </div>
+        <div id="card2" class="card">
+          <div class="card-small-title">Miyazaki Hayao</div>
+          <div class="card-title">Children of the Wind</div>
+          <div class="card-content">Quote: "The wind is calling, to fly freely."
+            Reflection: The wind symbolizes freedom and inspiration. We should bravely follow the voice of our hearts,
+            break through all limitations, and pursue our dreams. </div>
+          <div class="card-img">
+            <img src="./img/08.gif" alt="">
+          </div>
+        </div>
+        <div id="card3" class="card">
+          <div class="card-small-title">Miyazaki Hayao</div>
+          <div class="card-title">Castle in the Sky</div>
+          <div class="card-content">Quote: "At the end of the sky, there is another world."
+            Reflection: Sometimes we may feel lost and confused, but as long as we maintain faith and hope, we will
+            surely find our own piece of sky and achieve our dreams. </div>
+          <div class="card-img">
+            <img src="./img/03.gif" alt="">
+          </div>
+        </div>
+        <div id="card4" class="card">
+          <div class="card-small-title">Miyazaki Hayao</div>
+          <div class="card-title">Spirited Away</div>
+          <div class="card-content">Quote: "Don't stop, don't be afraid, just keep going, and you will find the answer."
+            Reflection: In the journey of life, we will encounter various difficulties and challenges, but as long as we
+            persevere, fear no hardship, and believe in our own strength, we will find the answers and achieve our
+            dreams.</div>
+          <div class="card-img">
+            <img src="./img/04.gif" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 定义变量 
+    let chosenSlideNumber = 1; // 当前选择的幻灯片编号 
+    let offset = 0; // 幻灯片偏移量 
+    let barOffset = 0; // 导航条偏移量 
+    let intervalID; // 定时器 ID 
+    // 启动幻灯片轮播 
+    startSlide();
+    // 获取所有抽屉按钮，并为每个按钮添加点击事件监听器 
+    const drawerBtns = Array.from(document.querySelectorAll(".drawer-btn"));
+    drawerBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        clearInterval(intervalID); // 清除定时器 
+        startSlide(); // 重新启动幻灯片轮播 
+      })
+    })
+    // 获取幻灯片区域 
+    const slideSection = document.querySelector("#slide-section");
+    // 鼠标移入幻灯片区域时清除定时器 
+    slideSection.addEventListener("mouseenter", () => {
+      clearInterval(intervalID);
+    })
+    // 鼠标移出幻灯片区域时重新启动幻灯片轮播 
+    slideSection.addEventListener("mouseleave", () => {
+      startSlide();
+    })
+    // 切换到指定编号的幻灯片 
+    function slideTo(slideNumber) {
+      drawerboxToggle(slideNumber); // 切换抽屉面板状态 
+      drawerbtnToggle(slideNumber); // 切换抽屉按钮状态 
+      // 更新偏移量 
+      let previousSlideNumber = chosenSlideNumber;
+      chosenSlideNumber = slideNumber;
+      offset += (chosenSlideNumber - previousSlideNumber) * (-100); // 计算幻灯片偏移量 
+      barOffset += (chosenSlideNumber - previousSlideNumber) * (100); // 计算导航条偏移量 
+      barSlide(barOffset); // 移动导航条 
+      // 获取所有幻灯片，为每个幻灯片设置偏移量 
+      const slides = document.querySelectorAll(".card");
+      Array.from(slides).forEach(slide => {
+        slide.style.transform = `translateY(${offset}%)`;
+      })
+    }
+    // 切换抽屉面板状态 
+    function drawerboxToggle(drawerboxNumber) {
+      let prevDrawerboxNumber = chosenSlideNumber;
+      const drawerboxes = document.querySelectorAll(".drawerbox");
+      drawerboxes[prevDrawerboxNumber - 1].classList.toggle("active"); // 切换前一个抽屉面板的状态 
+      drawerboxes[drawerboxNumber - 1].classList.toggle("active"); // 切换当前抽屉面板的状态 
+    }
+    // 切换抽屉按钮状态 
+    function drawerbtnToggle(drawerBtnNumber) {
+      let prevDrawerBtnNumber = chosenSlideNumber;
+      const drawerBtns = document.querySelectorAll(".drawer-btn");
+      drawerBtns[prevDrawerBtnNumber - 1].classList.toggle("active"); // 切换前一个抽屉按钮的状态 
+      drawerBtns[drawerBtnNumber - 1].classList.toggle("active"); // 切换当前抽屉按钮的状态 
+    }
+    // 移动导航条 
+    function barSlide(barOffset) {
+      const bar = document.querySelector("#bar");
+      bar.style.transform = `translateY(${barOffset}%)`;
+    }
+    // 启动幻灯片轮播 
+    function startSlide() {
+      intervalID = setInterval(() => {
+        slideTo(chosenSlideNumber % 4 + 1); // 每次切换到下一个幻灯片 
+      }, 3000); // 每隔 3 秒自动切换幻灯片 
+    }
+
+
+
+  </script>
+</body>
+
+</html>
