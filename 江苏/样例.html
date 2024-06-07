@@ -7,25 +7,44 @@
     <link rel="stylesheet" href="样例.css">  
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 	<style>  
-	    .image-container {  
-	    display: flex;
-	    justify-content: center; 
-	    align-items: center; 
-	    text-align: center; 
-	    max-width: 100%; 
-	    padding: 20px;   
-	    box-sizing: border-box; 
-	    border: 1px solid #ccc;
+	    .image-container {
+	      display: flex;  
+	      flex-direction: column; /* 改为列方向以垂直堆叠图片和描述 */  
+	      align-items: center;  
+	      text-align: center;  
+	      max-width: 90%;  
+	      padding: 20px;  
+	      box-sizing: border-box;  
+	      border: 1px solid #ccc;  
 	    }  
-	  
 	    .image-container img {  
-	    max-width: 100%;
-	    height: auto; 
+	      width: 90%; /* 设定图片宽度为容器宽度 */  
+	      height: auto; /* 保持图片比例 */  
+	      margin-bottom: 10%; /* 图片下方添加一些间距 */  
 	    }  
-	  
 	    .description {  
-	        display: none; 
-	        margin-top: 10px; 
+	      display: none;  
+	      margin-top: 10%;  
+	    }  
+	    /* 添加新样式以确保链接和下拉菜单正确显示 */  
+	    .dropdown {  
+	      display: none;  
+	      position: absolute;  
+	      background-color: #f9f9f9;  
+	      min-width: 160px;  
+	      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);  
+	      z-index: 1;  
+	    }  
+	    .dropdown li a {  
+	      color: black;  
+	      padding: 12px 16px;  
+	      text-decoration: none;  
+	      display: block;  
+	      text-align: left;  
+	    }  
+	    .dropdown li a:hover {background-color: #f1f1f1;}  
+	    .nav li:hover .dropdown {  
+	      display: block;  
 	    }  
 	</style>  
 </head>  
@@ -55,22 +74,22 @@
     <header>  
         <nav>  
             <ul>  
-                <li><a href="#">首页</a></li> 
+                <li><a href="#shouye">首页</a></li> 
 				<li>  
-				    <a href="#">景点推荐</a>  
+				    <a href="#jingdian">景点推荐</a>  
 				    <ul class="dropdown">  
-				        <li><a href="#">鼋头渚</a></li>  
-				        <li><a href="#">太湖</a></li>  
-				        <li><a href="#">苏州园林</a></li>  
+				        <li><a href="#antouzhu">鼋头渚</a></li>  
+				        <li><a href="#taihu">太湖</a></li>  
+				        <li><a href="#suzhou">苏州园林</a></li>  
 				    </ul>  
 				</li>  
-                <li><a href="#">美食一览</a></li>  
-                <li><a href="#">风土人情</a></li>  
-                <li><a href="#">历史渊源</a></li>  
+                <li><a href="#meishi">美食一览</a></li>  
+                <li><a href="#fengtu">风土人情</a></li>  
+                <li><a href="#lishi">历史渊源</a></li>  
             </ul>  
         </nav>  
     </header>  
-  
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="https://music.163.com/outchain/player?type=0&id=2829733864&auto=1&height=90"></iframe>
     <main>  
         <section class="hero">  
             <h1>welcome to 江苏</h1>  
@@ -78,7 +97,7 @@
         </section>  
     </main>  
 	<div class="transparent-box">  
-	    <h2 class="title" align="center">首页</h2>  
+	    <h2 class="title" align="center" id="shouye">首页</h2>  
 	    <p class="content">江苏，简称“苏”，省会南京，位于中国大陆东部沿海中心，介于东经116°18′～121°57′，北纬30°45′～35°20′之间。公元1667年因江南省东西分置而建省，得名于“江宁府”与“苏州府”之首字。 
 
 江苏省际陆地边界线3383公里，面积10.72万平方公里，占中国的1.12%，人均国土面积在中国各省区中最少。江苏地形以平原为主，平原面积达7万多平方公里，占江苏面积的70%以上，比例居中国各省首位。2014年，江苏常住人口达7960.06万人，居中国第5位。2014年，江苏13市GDP全部进入中国前100名，人均GDP达81874元，居中国各省首位。 
@@ -86,12 +105,12 @@
 江苏辖江临海，扼淮控湖，经济繁荣，教育发达，文化昌盛。地跨长江、淮河南北，京杭大运河从中穿过，拥有吴、金陵、淮扬、中原四大多元文化，是中国古代文明的发祥地之一。江苏地理上跨越南北，气候、植被也同时具有南方和北方的特征。江苏东临黄海、太平洋，与上海市、浙江省、安徽省、山东省接壤， 与日本九州岛、韩国济州岛、美国第一大州加利福尼亚州隔海相望 ，已与加利福尼亚州缔结为姐妹省州 ，成立了“江苏省-加利福尼亚州”联合经济委员会 。
 
 江苏与上海、浙江、安徽共同构成的长江三角洲城市群已成为国际6大世界级城市群之一 。江苏人均GDP、综合竞争力、地区发展与民生指数（DLI）均居全国各省第一 ，成为中国综合发展水平最高的省份 ，已步入“中上等”发达国家水平。</p>  
-		<h2 class="title" align="center">景点推荐</h2>
+		<h2 class="title" align="center" id="jingdian">景点推荐</h2>
 	    <div class="container">  
 	        <div class="box">  
 	            <img class="box-image" src="img/鼋头渚.jpg" alt="图片加载失败">  
 	            <div class="box-content">
-					<h3 class="title" align="center">鼋头渚</h3>  
+					<h3 class="title" align="center" id="antouzhu">鼋头渚</h3>  
 					<p class="content">鼋头渚是太湖绝佳处，有“太湖第一名胜”之称。南临太湖，北接无锡市区，山清水秀，美丽富饶，素有“太湖明珠”之称。鼋头渚有“云蒸霞蔚”的美景，有“太湖之珠”的美誉。每逢秋高气爽，太湖鼋头渚万顷烟波浩渺，仿佛置身云雾仙境，别有一番情趣。
 
 此外，鼋头渚内还有许多名人字画和文物遗迹，如清末民初建筑群、长春湖上石桥、花轿、古戏台、面塑、织布等民俗表演等。
@@ -104,12 +123,12 @@
 			    <div class="box">  
 			        <img class="box-image" src="img/太湖.webp" alt="图片加载失败">  
 			        <div class="box-content">
-						<h3 class="title" align="center">太湖</h3>  
+						<h3 class="title" align="center" id="taihu">太湖</h3>  
 						<p class="content">太湖位于长江三角洲的南缘，古称震泽、具区，又名五湖、笠泽，是中国五大淡水湖之一，位居第三。它位于江苏省南部，横跨江苏、浙江两省，北临江苏无锡，南濒浙江湖州，西依江苏常州、江苏宜兴，东近江苏苏州。
 
 太湖湖泊面积2427.8平方公里，水域面积为2338.1平方公里，湖岸线全长393.2公里。其西和西南侧为丘陵山地，东侧以平原及水网为主。太湖地处亚热带，气候温和湿润，属季风气候。太湖河港纵横，河口众多，有主要进出河流50余条。蓄水量为44亿立方米。且太湖岛屿众多，有50多个，其中18个岛屿有人居住。
 
-此外，太湖周边拥有许多风景名胜，如苏州太湖的八大景点：西山景区、东山景区、光福景区、穹窿山景区、旺山景区、三山岛、太湖公园和东太湖生态园等，每年都吸引着大量游客前来观光旅游。</p> 
+此外，太湖周边拥有许多风景名胜，如苏州太湖的八大景点：西山景区、东山景区、光福景区、穹窿山景区、旺山景区、三山岛、太湖公园和东太湖生态园等，每年都吸引着大量游客前来观光旅游。</p> 
 					</div>  
 				</div> 
 			</div>  
@@ -117,7 +136,7 @@
 					    <div class="box">  
 					        <img class="box-image" src="img/苏州园林1.webp" alt="图片加载失败">  
 					        <div class="box-content">
-								<h3 class="title" align="center">苏州园林</h3>  
+								<h3 class="title" align="center" id="suzhou">苏州园林</h3>  
 								<p class="content">苏州园林是中国古典园林的代表之一，被誉为“江南园林代表”，以其独特的艺术风格和精美的建筑而闻名。以下是苏州园林的一些主要特点：<br />
 
 1. 历史悠久：苏州园林历史悠久，可以追溯到公元前5世纪，是中国园林文化的瑰宝。<br />
@@ -132,14 +151,14 @@
 							</div>  
 						</div> 
 					</div>  
-		<h2 class="title" align="center">美食一览</h2>
+		<h2 class="title" align="center" id="meishi">美食一览</h2>
 	    <div class="gallery">  
 	        <div class="gallery-item">  
-	            <img src="img/松鼠鲈鱼.png" alt="图片加载失败">  
+	            <img src="img/松鼠鲈鱼.jpeg" alt="图片加载失败">  
 	            <div class="caption">松鼠鲈鱼</div>  
 	        </div>  
 	        <div class="gallery-item">  
-	            <img src="img/狮子头.webp" alt="图片加载失败">  
+	            <img src="img/苏州狮子头.webp" alt="图片加载失败">  
 	            <div class="caption">苏州狮子头</div>  
 	        </div>  
 	        <div class="gallery-item">  
@@ -155,7 +174,7 @@
 			    <div class="caption">南京盐水鸭</div>  
 			</div>  
 	    </div> 
-		<h2 class="title" align="center">风土人情</h2>
+		<h2 class="title" align="center" id="fengtu">风土人情</h2>
 		<p class="content">江苏省拥有丰富多彩的风土人情，体现在以下几个方面：<br />
 1.冬至习俗。江苏人在冬至时会有特定的习俗，比如吃饺子、汤圆等传统食品，同时进行祭祖和扫墓等活动。<br />
 2.腌菜文化。江苏人喜欢腌制各种蔬菜，如萝卜、辣椒、蒜等，这不仅是美食，也是春节期间的重要食品。<br />
@@ -166,11 +185,11 @@
 7.江苏美食。江苏的美食文化也非常丰富，如南京的鸭血粉丝汤、苏州的月饼、扬州的炒饭、盐城的花生米、徐州的臭豆腐、无锡的肉夹馍、镇江的香醋和南通的花菜等。</p>
 		<div class="gallery">
 		    <div class="gallery-item">  
-		        <img src="img/风土人情1.webp" alt="图片加载失败">  
+		        <img src="img/风土人情7.jpeg" alt="图片加载失败">  
 		        <div class="caption">古镇</div>  
 		    </div>  
 		    <div class="gallery-item">  
-		        <img src="img/风土人情6.jpg" alt="图片加载失败">  
+		        <img src="img/风土人情9.jpeg" alt="图片加载失败">  
 		        <div class="caption">祭天</div>  
 		    </div>  
 		    <div class="gallery-item">  
@@ -178,15 +197,15 @@
 		        <div class="caption">水乡驾船</div>  
 		    </div>  
 		    <div class="gallery-item">
-		        <img src="img/风土人情4.webp" alt="图片加载失败">  
-		        <div class="caption">古镇夜晚</div>  
+		        <img src="img/风土人情8.jpg" alt="图片加载失败">  
+		        <div class="caption">林间小道</div>  
 		    </div>  
 			<div class="gallery-item">
-			    <img src="img/风土人情5.jpg" alt="图片加载失败">  
-			    <div class="caption">夜晚的氛围</div>  
+			    <img src="img/风土人情10." alt="图片加载失败">  
+			    <div class="caption">水乡之景</div>  
 			</div>  
 		</div> 
-		<h2 class="title" align="center">历史渊源</h2>
+		<h2 class="title" align="center" id="lishi">历史渊源</h2>
 		<p class="content">江苏的历史可以追溯到上古时代，据《尚书·禹贡》记载，江苏地域属九州中的徐州和扬州的一部分。在夏商周时期，江苏的北部地区属于东夷、淮夷，南部地区属于勾吴。到了春秋战国时期，江苏地区分别属于齐国、鲁国、宋国、吴国、楚国等不同的诸侯国。秦代实行郡县制时，江苏境内长江以南的地区属于会稽郡，以北的地区属于东海郡和泗水郡。
 
 在随后的历史中，江苏地区经历了多次行政区域的变更。明朝时期，明太祖朱元璋定都应天府（今南京），江苏地区称为直隶。到了清朝初期，南直隶地区被改为江南省。康熙六年（1667年），江南省被分为江苏和安徽两个省，江苏省取江宁、苏州二府之首字而得名，简称“苏”，省会设在南京。3
