@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* 设置body高度为100%窗口高度 */
+    height: 100vh;
+    /* 弹性盒子模型 */
+    display: flex;
+    /* 限免两个属性是让body里的子类居中 */
+    justify-content: center;
+    align-items: center;
+    background-size: 100% 100%;
+    background-image: url('background.jpg');
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    height: 450px;
+    border-radius: 20px;
+    background-color: rgba(5, 25, 40, 0.342);
+    margin: 30px;
+    border-radius: 15px;
+    /* 阴影 */
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+    /* 溢出隐藏 */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-left: 1px solid rgba(255,255,255,0.5);
+    /* 背景模糊 */
+    backdrop-filter: blur(10px);
+}
+
+    .container form {
+        width: 350px;
+        height: 200px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+    }
+
+        .container form .tbx {
+            width: 250px;
+            height: 40px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #fff;
+            background: none;
+            color: #ffffff;
+            font-size: 17px;
+        }
+            /* 设置文本框提示文本的样式 */
+            .container form .tbx::placeholder {
+                color: #fff;
+                font-size: 17px;
+                text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.589);
+            }
+
+        .container form .sub {
+            width: 250px;
+            height: 40px;
+            outline: none;
+            border: 1px solid #ffffffb2;
+            border-radius: 20px;
+            letter-spacing: 5px;
+            color: #fefefe;
+            background-image: radial-gradient(circle,#64a2ff74,#093297b2);
+            cursor: pointer;
+            margin-top: 5px;
+            font-size: 15px;
+            font-family: YouYuan;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+        }
+
+    .container h1 {
+        color: #fafafa;
+        font-size: 50px;
+        letter-spacing: 5px;
+        font-weight: 100;
+        font-family: YouYuan;
+        /* 文字阴影 */
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+    /* 设置鼠标进入的样式 */
+    .container .in {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background-image: radial-gradient(circle,#e6e7e8d1,#3aadffdf);
+        transform: translate(-50%,-50%);
+        /* 使用in动画，持续0.5秒，缓出的时间函数，停留在最后一帧 */
+        animation: in 0.5s ease-out forwards;
+    }
+    /* 设置鼠标离开的样式 */
+    .container .out {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 1200px;
+        height: 1200px;
+        border-radius: 50%;
+        background-image: radial-gradient(circle,#ecf2f5e4,#3aadffda);
+        transform: translate(-50%,-50%);
+        /* 使用out动画，持续0.5秒，缓出的时间函数，停留在最后一帧 */
+        animation: out 0.5s ease-out forwards;
+    }
+/* 动画 */
+/* 设置鼠标进入时，元素的动画 */
+@keyframes in {
+    /* 初始关键帧 */
+    0% {
+        width: 0;
+        height: 0;
+    }
+    /* 结束关键帧 */
+    100% {
+        width: 1200px;
+        height: 1200px;
+    }
+}
+/* 设置鼠标离开时，元素的动画 */
+@keyframes out {
+    /* 初始关键帧 */
+    0% {
+        width: 1200px;
+        height: 1200px;
+    }
+    /* 结束关键帧 */
+    100% {
+        width: 0;
+        height: 0;
+    }
+}
