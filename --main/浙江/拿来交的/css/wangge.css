@@ -1,0 +1,161 @@
+
+.gallery{
+    
+    
+    margin-top: 20px;
+    box-sizing: border-box;
+    position: relative;
+    width: 760px;
+    height: 305px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-left: 415px
+}
+.gallery .item1{
+    position: absolute;
+    width: 175px;
+    height: 150px;
+    overflow: hidden;
+    /* 添加过渡动画 */
+    transition: transform 0.9s, width 0.9s, height 0.9s;
+}
+.gallery .item1 img{
+    width: 100%;
+    height: 100%;
+}
+.gallery div[data-pos="0"]{
+    width: 400px;
+    height: inherit;
+    z-index: 9;
+}
+.gallery div[data-pos="0"]{
+    transform: translate(0,0);
+}
+.gallery div[data-pos="1"]{
+    transform: translate(405px,0);
+}
+.gallery div[data-pos="2"]{
+    transform: translate(585px,0);
+}
+.gallery div[data-pos="3"]{
+    transform: translate(405px,155px);
+}
+.gallery div[data-pos="4"]{
+    transform: translate(585px,155px);
+}
+.gallery:hover :not(div[data-pos="0"], img){
+    cursor: pointer;
+}
+.container{
+    margin-top: 20px;
+    /* 弹性布局 默认水平排列 */
+    display: flex;
+    width: 90vw;
+    max-width: 900px;
+    height: 400px;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-left: 345px
+    
+}
+.item{
+    /* 相对定位 */
+    position: relative;
+    width: 60px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    /* 保持原有尺寸比例，裁切长边 */
+    background-size: cover;
+    /* 定位背景图像为正中间 */
+    background-position: center;
+    /* 过渡效果：时长 贝塞尔曲线 */
+    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);
+    overflow: hidden;
+}
+.item .shadow{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);
+}
+.item .content{
+    display: flex;
+    position: absolute;
+    left: 10px;
+    right: 0;
+    bottom: 10px;
+    height: 40px;
+    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);
+}
+.item .content .icon{
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+.item:nth-child(1) .fa{
+    color: #fc6e51;
+}
+.item:nth-child(2) .fa{
+    color: #ffce54;
+}
+.item:nth-child(3) .fa{
+    color: #2ecc71;
+}
+.item:nth-child(4) .fa{
+    color: #5d9cec;
+}
+.item:nth-child(5) .fa{
+    color: #ac92ec;
+}
+.item .content .text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    color: #fff;
+    width: 100%;
+}
+.item .content .text div{
+    /* 超出显示省略号（需要设置width） */
+    width: calc(100% - 70px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+.item .content .text .tit{
+    font-weight: bold;
+    font-size: 18px;
+}
+.item .content .text .sub{
+    /* 设置过渡效果延迟时间 */
+    transition-delay: 0.1s;
+}
+/* 选中态样式 */
+.item.active{
+    flex: 1;
+    margin: 0;
+    border-radius: 40px;
+}
+.item.active .shadow{
+    background: linear-gradient(to top,rgba(0,0,0,0.35) 65%,transparent);
+}
+.item.active .content{
+    bottom: 20px;
+    left: 20px;
+}
+.item.active .content .text div{
+    opacity: 1;
+}
