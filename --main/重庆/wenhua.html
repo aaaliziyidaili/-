@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>济南——饮食文化</title>
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+
+<body>
+    <div class="home">
+        <!-- nav -->
+        <div class="nav">
+            <div class="w">
+                <img src="images/logo.jpg" alt="" class="logo">
+                <ul>
+                  <li><a href="index.html" style="font-family: 仿宋_GB2312;">首页</a></li>
+                  <li><a href="huanjing.html" style="font-family: 仿宋_GB2312;">地理环境</a></li>
+                  <li><a href="wenhua.html" style="font-family: 仿宋_GB2312;">饮食文化</a></li>
+                  <li><a href="techan.html" style="font-family: 仿宋_GB2312;">家乡特产</a></li>
+                  <li><a href="honor.html" style="font-family: 仿宋_GB2312;">荣誉称号</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- banner -->
+        <div class="banner">
+            <div class="w">
+                <img src="images/banner.webp" alt="">
+            </div>
+        </div>
+        <!-- content -->
+        <div class="content">
+            <div class="text">
+                <h1>饮食文化</h1>
+          
+
+                       <div class="wh">
+                           <p>重庆饮食特点与文化-“一菜一格,百菜百味”</p>
+                         <details open>
+                             <summary style="cursor: pointer;">重庆火锅</summary>
+                             <p>重庆老火锅是川渝地区传统美食之一，以麻辣为主，咸鲜、酸辣味兼有，分清汤火锅、红汤火锅和鸳鸯火锅。它以调汤考究见长，具有原料多样，荤素皆可，适应广泛，风格独特，场面热烈等特色，因而热辣山城。</p>
+                             <img src="images/火锅.jpg" alt="">
+                         </details>
+                           <details>
+                               <summary style="cursor: pointer;">重庆小面</summary>
+                               <p>重庆小面是作为南方人的重庆市民普遍接受的传统面食，因其独特口感，以辣闻名，近年来全国知名。</p>
+                               <img src="images/小面.jpg" alt="">
+                           </details>
+                           <details>
+                               <summary style="cursor: pointer;">万州烤鱼</summary>
+                               <p>万州烤鱼是重庆市万州区的特色传统名菜，属于渝派川菜系。万州烤鱼把鱼剖洗净后平放在铁夹中，放在炉上用木炭烧烤，盛到专用铁盘中，浇上用牛油、红油、白糖、花椒、辣椒等调味品炒出底料，放上西芹、豆芽等爽口菜。口味咸辣。</p>
+                               <img src="images/烤鱼.jpg" alt="">
+                           </details>
+                           <details>
+                               <summary style="cursor: pointer;">重庆黔江鸡杂</summary>
+                               <p>黔江鸡杂运用土家烹饪方法，泛指鸡的内脏，即鸡心、鸡胗、鸡肠和鸡肝之类为原料。爆椒鸡杂是地道的重庆江湖菜，鸡杂的腥膻味重，将其与辣椒、泡椒和葱姜蒜同炒，热菜油烹饪红艳艳的泡椒、粉嫩嫩的泡萝卜丝，既可以去除鸡杂的异味，还使成菜脆嫩鲜香、辣得人食欲大增。</p>
+                               <img src="images/鸡杂.jpg" alt="">
+                           </details>
+                           <details>
+                               <summary style="cursor: pointer;">歌乐山辣子鸡</summary>
+                               <p>歌乐山辣子鸡是重庆歌乐山地区的特色菜，由朱汉清首创，自1910年流传至今已有百多年历史。这道菜最初以干煽方式制作，肉块较大，风味麻辣可口，肉质紧实弹牙干香，具有浓郁的川东地方风味特色。</p>
+                               <img src="images/辣子鸡.jpg" alt="">
+                           </details>
+                           <details>
+                               <summary style="cursor: pointer;">南山泉水鸡</summary>
+                               <p>泉水鸡是重庆市传统的地方名菜，属于渝派川菜，特点是用料独特、麻辣味足、鲜酥爽口
+                               </p>
+                               <img src="images/泉水鸡.jpg" alt="">
+                           </details>
+                       </div>
+               
+               
+                   </div>
+               </div> 
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div class="w">
+                <p>重庆欢迎您</p>
+            </div>
+        </div>
+    </div>
+</body>
+</body>
+
+<style>
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+#back-to-top:hover {
+    background-color: #555;
+}
+
+body.show-back-to-top #back-to-top {
+    display: block;
+}
+
+#back-to-top::before {
+    content: '\25B2'; 
+}
+</style>
+</head>
+<body>
+
+<div id="back-to-top">回到顶部</div>
+
+<script>
+window.onscroll = function() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.body.classList.add('show-back-to-top');
+    } else {
+        document.body.classList.remove('show-back-to-top');
+    }
+};
+
+document.getElementById("back-to-top").addEventListener("click", function() {
+    document.body.scrollTop = 0; 
+    document.documentElement.scrollTop = 0; 
+});
+</script>
+
+</body>
+</html>
