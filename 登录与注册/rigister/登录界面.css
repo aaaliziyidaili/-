@@ -1,0 +1,148 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    /* 设置body高度为100%窗口高度 */
+    height:100vh;
+    /* 弹性盒子模型 */
+    display: flex;
+    /* 限免两个属性是让body里的子类居中 */
+    justify-content: center;
+    align-items: center;
+    /*background-color: #1d1928;*/
+	background-image: url('background.jpg');
+	background-size: 100% 100%;
+}
+.imgm{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-image: url(../img/飞机1.png);
+    background-size: cover;
+    z-index: 5;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    height: 450px;
+    border-radius: 20px;
+	border-right: 2px solid #909090;
+	border-bottom: 2px solid #626262;
+    /*background-color: #4471a3;*/
+	background-image: url('airticket1.jpg');
+	background-size: 100% 100%;
+    /* 盒子阴影 */
+    box-shadow: 15px 15px 10px rgba(33,45,58,0.3);
+    overflow: hidden;
+    position:relative;
+}
+.container form{
+    width: 350px;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+.container form .tbx{
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #626262;
+    background: none;
+    color:#626262;
+    font-size: 15px;
+}
+/* 设置文本框提示文本的样式 */
+.container form .tbx::placeholder{
+    color: #909090;
+    font-size: 15px;
+}
+.container form .sub{
+    width: 250px;
+    height: 40px;
+    outline: none;
+    border:3px solid #626262;
+	box-shadow: 5px 5px 5px rgba(33,45,58,0.3);
+    border-radius: 20px;
+    letter-spacing: 5px;
+    color:#626262;
+    background: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.container h1{
+    color: #383838;
+    font-size: 50px;
+	font-family: YouYuan;
+    letter-spacing: 5px;
+    font-weight: 100;
+    /* 文字阴影 */
+    text-shadow: 3px 3px 5px rgba(33,45,58,0.5);
+    z-index: 1;
+}
+/* 设置鼠标进入的样式 */
+.container .in{
+    position: absolute;
+    top:0;
+    left:0;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-image: radial-gradient(circle,#ffffff,#a6d9ff);
+	opacity: 0.9;
+	/*background-image: url('airticket2.jpg');
+	background-size: 100% 100%;*/
+    transform: translate(-50%,-50%);
+    /* 使用in动画，持续0.5秒，缓出的时间函数，停留在最后一帧 */
+    animation: in 0.5s ease-out forwards;
+}
+/* 设置鼠标离开的样式 */
+.container .out{
+    position: absolute;
+    top:0;
+    left:0;
+    display: block;
+    width: 1200px;
+    height: 1200px;
+    border-radius: 50%;
+    background-image: radial-gradient(circle,#ffffff,#a6d9ff);
+	opacity: 0.9;
+    transform: translate(-50%,-50%);
+    /* 使用out动画，持续0.5秒，缓出的时间函数，停留在最后一帧 */
+    animation: out 0.5s ease-out forwards;
+}
+/* 动画 */
+/* 设置鼠标进入时，元素的动画 */
+@keyframes in{
+    /* 初始关键帧 */
+    0%{
+        width: 0;
+        height: 0;
+    }
+    /* 结束关键帧 */
+    100%{
+        width: 1200px;
+        height: 1200px;
+    }
+}
+/* 设置鼠标离开时，元素的动画 */
+@keyframes out{
+    /* 初始关键帧 */
+    0%{
+        width: 1200px;
+        height: 1200px;
+    }
+    /* 结束关键帧 */
+    100%{
+        width: 0;
+        height: 0;
+    }
+}

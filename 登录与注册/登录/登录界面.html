@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+  <title>登机中…</title>
+  <link rel="stylesheet" href="登录界面.css" />
+  <style>
+    a {
+      text-decoration: none;
+      color: #b9edff;
+      text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .imgm {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-image: url(../img/飞机1.png);
+      background-size: cover;
+      z-index: 5;
+    }
+  </style>
+
+  <script src="登录界面.js"></script>
+</head>
+
+<body>
+  <div class="imgm"></div>
+  <div class="container">
+
+    <h1>登机中…</h1>
+    <form action="登录.php" method="post">
+      <input type="text" class="tbx" name="username" placeholder="账号" />
+      <input type="password" class="tbx" name="password" placeholder="密码" />
+      <a href="../rigister/登录界面.html"><b>注册</b></a>
+      <input type="submit" class="sub" name="login" value="确认身份信息！启航！" />
+    </form>
+  </div>
+  <script>
+    // 定义一个con绑定.container
+    const con = document.querySelector(".container");
+
+    // 定义两个函数开关（门）
+    let isIn = true; // 鼠标进去的门，默认打开
+    let isOut = false; // 鼠标出去的门，默认关闭
+
+    var span; // 给未出生的元素取个名字span
+
+    // 添加监听
+    // 监听鼠标进去的事件
+    con.addEventListener("mouseenter", (e) => {
+      // 如果进去的门是打开的，就可以执行这个函数
+      if (isIn) {
+        // 获取进入的鼠标位置
+        // 生成元素的位置=进入点距离窗口的距离-父盒子距离窗口的距离
+        let inX = e.clientX - e.target.offsetLeft;
+        let inY = e.clientY - e.target.offsetTop;
+
+        // 创建一个span元素，并且给它对应的出生坐标
+        let el = document.createElement("span");
+        el.style.left = inX + "px";
+        el.style.top = inY + "px";
+        // 添加到con对应的父元素，即container
+        con.appendChild(el);
+
+        $(".container span").removeClass("out"); // 移除出去的动画
+        $(".container span").addClass("in"); // 添加进入的动画
+        span = document.querySelector(".container span");
+        isIn = false; // 关闭进来的门（不能使用进入的方法）
+        isOut = true; // 打开出去的门（可以使用出去的方法）
+      }
+    });
+    // 监听鼠标出去的事件
+    con.addEventListener("mouseleave", (e) => {
+      if (isOut) {
+        // 获取出去的鼠标位置
+        // 生成元素的位置=出去点距离窗口的距离-父盒子距离窗口的距离
+        let outX = e.clientX - e.target.offsetLeft;
+        let outY = e.clientY - e.target.offsetTop;
+
+        $(".container span").removeClass("in"); // 移除进入的动画
+        $(".container span").addClass("out"); // 添加出去的动画
+        // 添加出去的坐标
+        $(".out").css("left", outX + "px");
+        $(".out").css("top", outY + "px");
+
+        isOut = false; // 关闭出去的门
+        // 当动画结束后再删除元素
+        setTimeout(() => {
+          con.removeChild(span); // 删除元素
+          isIn = true; // 打开进入的门
+        }, 500);
+      }
+    });
+    let imgm = document.querySelector('.imgm')
+    // 定义小图片的旋转角度
+    let deg = 0
+    // 定义小图片位于网页左侧的位置
+    let imgx = 0
+    // 定义小图片位于网页顶部的位置
+    let imgy = 0
+    // 定义小图片x轴的位置
+    let imgl = 0
+    // 定义小图片y轴的位置
+    let imgt = 0
+    // 定义小图片翻转的角度
+    let y = 0
+    // 定义一个计数器
+    let index = 0
+
+    window.addEventListener('mousemove', function (xyz) {
+      // 获取网页左侧距离的图片位置
+      imgx = xyz.x - imgm.offsetLeft - imgm.clientWidth / 2
+      // 多去网页顶部距离图片的位置
+      imgy = xyz.y - imgm.offsetTop - imgm.clientHeight / 2
+      // 套入公式，定义图片的旋转角度
+      deg = 360 * Math.atan(imgy / imgx) / (2 * Math.PI)
+      // 每当鼠标移动的时候重置index
+      index = 0
+      // 定义当前鼠标的位置
+      let x = event.clientX
+      // 当鼠标的x轴大于图片的时候，提普安就要对着鼠标，所以需要将图片翻转过来
+      // 否则就不用翻转
+      if (imgm.offsetLeft < x) {
+        y = -180
+      } else {
+        y = 0
+      }
+    })
+    setInterval(() => {
+      // 设置小图片的旋转和翻转
+      imgm.style.transform = "rotateZ(" + deg + "deg) rotateY(" + y + "deg)"
+      index++
+      // 在这里设置小图片的位置和速度，并判断小图片到达鼠标位置时停止移动
+      if (index < 50) {
+        imgl += imgx / 50
+        imgt += imgy / 50
+      }
+      imgm.style.left = imgl + "5px"
+      imgm.style.top = imgt + "5px"
+    }, 10)
+  </script>
+</body>
+
+</html>
